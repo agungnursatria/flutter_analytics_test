@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:flutter/material.dart';
@@ -8,11 +10,11 @@ void main() {
   runApp(MyApp());
 }
 
+FirebaseAnalytics analytics = FirebaseAnalytics();
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    FirebaseAnalytics analytics = FirebaseAnalytics();
-
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -44,6 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
     'Bakso',
     'Nasi Goreng',
   ];
+  Random _r = Random();
 
   @override
   void initState() {
@@ -57,35 +60,41 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _purchase() async {
-    FirebaseAnalytics analytics = FirebaseAnalytics();
+    // FirebaseAnalytics analytics = FirebaseAnalytics();
 
     // Log Purchase
     await analytics.logEvent(
       name: 'purchase',
       parameters: filterOutNulls(<String, dynamic>{
         /// The unique identifier of a transaction (String).
-        'transaction_id': _counter.toString(),
+        'transaction_id': _r.nextInt(1000000).toString(),
 
-        /// A product affiliation to designate a supplying company or brick and mortar store location (String).
-        'affiliation': null,
+        // /// A product affiliation to designate a supplying company or brick and mortar store location (String).
+        // 'affiliation': null,
 
-        /// Coupon code used for a purchase (String).
-        'coupon': null,
+        // /// Coupon code used for a purchase (String).
+        // 'coupon': null,
 
         /// Currency of the purchase or items associated with the event, in 3-letter ISO_4217 format (String).
         'currency': 'IDR',
 
         /// The list of items involved in the transaction.
-        'items': _itemName[(_counter / 3).floor()],
+        // 'items': _itemName,
 
-        /// Shipping cost associated with a transaction (double).
-        'shipping': 20000,
+        // /// Shipping cost associated with a transaction (double).
+        // 'shipping': 20000,
 
-        /// Tax cost associated with a transaction (double).
-        'tax': 10000,
+        // /// Tax cost associated with a transaction (double).
+        // 'tax': 10000,
 
         /// A context-specific numeric value which is accumulated automatically for each event type.
         'value': 100000,
+
+        /// Customized parameter
+        'barang': _itemName.toString(),
+
+        /// Customized parameter
+        'jumlah': (_counter / 3).floor() + 1,
       }),
     );
     setState(() {
@@ -96,15 +105,15 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _epurchase() async {
-    FirebaseAnalytics analytics = FirebaseAnalytics();
+    // FirebaseAnalytics analytics = FirebaseAnalytics();
 
     // Log E-Purchase
     await analytics.logEcommercePurchase(
       currency: 'IDR',
-      shipping: 20000,
-      tax: 10000,
+      // shipping: 20000,
+      // tax: 10000,
       value: 100000, // Price
-      transactionId: _counter.toString(),
+      transactionId: _r.nextInt(1000000).toString(),
     );
     setState(() {
       _counter++;
