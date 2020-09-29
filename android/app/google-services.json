@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1079941507068",
+    "firebase_url": "https://flutter-test-analytics.firebaseio.com",
+    "project_id": "flutter-test-analytics",
+    "storage_bucket": "flutter-test-analytics.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1079941507068:android:2fdae58f7ae319a3977479",
+        "android_client_info": {
+          "package_name": "com.example.flutter_epurchase_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1079941507068-38386ae8f8lllol0m2mv7og0ft342oe5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_mbfRnRRRRisUsNi5enTXs6rEUcbOj3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1079941507068-38386ae8f8lllol0m2mv7og0ft342oe5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
